@@ -1,0 +1,8 @@
+{
+  "name": "lorem",
+  "data": "10 words",
+  "arguments": {
+    "unit": "infer"
+  },
+  "inline": false
+}
