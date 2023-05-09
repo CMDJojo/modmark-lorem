@@ -5,7 +5,7 @@ import LoremSwiftum
 
 let manifest = Manifest(
     name: "lorem",
-    version: "0.1",
+    version: "0.1.1",
     description: "Generates placeholder text",
     transforms: [
         Transform(
@@ -60,7 +60,7 @@ let module = try decoder.decode(Module.self, from: input.data(using: .utf8)!)
 
 let numbers = module.data.prefix(while: { $0.isNumber })
 guard !numbers.isEmpty else {
-    fputs("Enter a length: [lorem] 10, [lorem] 20words\n", stderr)
+    fputs("Enter a length as body. Examples: '[lorem] 10', '[lorem] 1sentence'\n", stderr)
     exit(0)
 }
 let count = Int(numbers)!
@@ -108,7 +108,7 @@ switch unit {
     case .email:
         paragraphs = [AnyIterator { Lorem.emailAddress }.prefix(count).joined(separator: ", ")]
     case .url:
-        paragraphs = [AnyIterator { Lorem.fullName }.prefix(count).joined(separator: ", ")]
+        paragraphs = [AnyIterator { Lorem.url }.prefix(count).joined(separator: ", ")]
 }
 
 let encoder = JSONEncoder()
